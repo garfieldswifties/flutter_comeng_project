@@ -1,6 +1,6 @@
 # flutter_comeng_project
 
-Assignment 03 ฝึกสร้าง UI 6 หน้าของแอป **SAU Deverloper** ด้วย Flutter และ Dart
+ฝึกสร้าง UI 6 หน้าของแอป **SAU Deverloper** ด้วย Flutter และ Dart
 ตาม Mockup ของการเข้าสู่ระบบและกู้รหัสผ่าน
 
 ## ภาพหน้าจอ
