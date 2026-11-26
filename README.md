@@ -1,6 +1,6 @@
 # SAU Deverloper
 
-ต้นแบบแอปบนมือถือสำหรับสาธิตการเข้าสู่ระบบและกู้รหัสผ่าน พัฒนาด้วย Flutter และ Dart ผู้ใช้ลองกรอกข้อมูลและเดินตามขั้นตอนกู้รหัสผ่านได้ในเครื่อง โดยใช้ฟอร์มและการเปลี่ยนหน้าจอเพื่อแสดงประสบการณ์ใช้งานตามแบบ Figma
+SAU Deverloper เป็น UI Prototype ที่พัฒนาด้วย Flutter และ Dart เพื่อสาธิตฟอร์มเข้าสู่ระบบ การกรอก OTP และการตั้งรหัสผ่านใหม่ตามแบบ Figma ทุกขั้นตอนทำงานในเครื่องและยังไม่ได้เชื่อมต่อระบบยืนยันตัวตนหรือฐานข้อมูลจริง
 
 ## ฟังก์ชันการทำงาน
 
@@ -13,7 +13,7 @@
 
 ## ภาพหน้าจอแอปพลิเคชัน
 
-ภาพจากแอปเวอร์ชันสุดท้ายที่ขนาด 375 × 812 logical pixels ตามเฟรม Figma
+ภาพจาก Flutter Web ใน Chrome ที่ขนาด 375 × 812 logical pixels ตามเฟรม Figma
 
 | Home | Login | Forgot Password | OTP Verification | New Password | Password Changed |
 | :---: | :---: | :---: | :---: | :---: | :---: |
@@ -25,38 +25,28 @@
 |---|---|
 | Flutter และ Dart | สร้างหน้าจอ จัดการฟอร์ม และเปลี่ยนหน้าจอ |
 | `material_ui` | ส่วนประกอบ Material สำหรับหน้าจอและฟอร์ม |
-| `google_fonts` | ใช้ Urbanist จากไฟล์ฟอนต์ที่อยู่ในโปรเจกต์ |
+| `google_fonts` | ใช้ Urbanist จากไฟล์ในโปรเจกต์ โดยใช้ Noto Sans Thai สำหรับข้อความภาษาไทย |
 | `font_awesome_flutter` | แสดงไอคอนลูกศรย้อนกลับ |
 | `flutter_launcher_icons` | สร้าง Launcher Icons จากภาพต้นทางของแอป |
 | `flutter_test` และ `flutter_lints` | เขียน Widget tests และกำหนดกฎวิเคราะห์โค้ด |
 
 ## โครงสร้างโปรเจกต์
 
-| ไฟล์ใน `lib/views/` | Class | หน้าจอและหน้าที่ |
-|---|---|---|
-| `home_ui.dart` | `HomeUI` | Home แสดงภาพประกอบและมีปุ่มไปหน้า Login |
-| `login_ui.dart` | `LoginUI` | Login แสดงฟอร์มอีเมลและรหัสผ่าน ปุ่มเปิดหรือซ่อนรหัสผ่าน และลิงก์ลืมรหัสผ่าน |
-| `forgot_ui.dart` | `ForgotUI` | Forgot Password รับอีเมลเพื่อไปยังหน้ากรอก OTP ในขั้นตอนสาธิต |
-| `otp_ui.dart` | `OtpUI` | OTP Verification แสดงช่องกรอกรหัส 4 หลักและปุ่ม Verify |
-| `new_password_ui.dart` | `NewPasswordUI` | New Password แสดงช่องรหัสผ่านใหม่ ช่องยืนยัน และปุ่ม Reset Password |
-| `password_change_ui.dart` | `PasswordChangeUI` | Password Changed แสดงข้อความสำเร็จและปุ่มกลับไป Login |
-
-| ตำแหน่ง | เนื้อหา |
-|---|---|
-| `lib/main.dart` | จุดเริ่มต้นของแอปและการตั้งค่าเส้นทางหน้าจอ |
-| `lib/widgets/` | Widget ที่ใช้ร่วมกันระหว่างหน้าจอ |
-| `assets/images/` และ `assets/fonts/` | รูปประกอบ โลโก้ ฟอนต์ และไฟล์สิทธิ์ของฟอนต์ |
-| `docs/screenshots/` | ภาพหน้าจอสำหรับ README |
-| `test/` | Widget tests |
-| `android/`, `ios/` และ `web/` | ไฟล์ตั้งค่าและไอคอนของแต่ละแพลตฟอร์ม |
-| `pubspec.yaml` และ `pubspec.lock` | การตั้งค่า Flutter, Assets, Launcher Icons และเวอร์ชัน Dependencies |
+| ไฟล์ | Class | หน้าที่ |
+| --- | --- | --- |
+| `lib/main.dart` | `FlutterComengProject` | ตั้งธีม ฟอนต์ และเส้นทางหน้าจอ |
+| `lib/views/home_ui.dart` | `HomeUI` | หน้าแนะนำก่อนเข้าสู่ Login |
+| `lib/views/login_ui.dart` | `LoginUI` | ฟอร์มเข้าสู่ระบบและทางไปหน้ากู้รหัสผ่าน |
+| `lib/views/forgot_ui.dart` | `ForgotUI` | ฟอร์มกรอกอีเมล |
+| `lib/views/otp_ui.dart` | `OtpUI` | ฟอร์มกรอก OTP |
+| `lib/views/new_password_ui.dart` | `NewPasswordUI` | ฟอร์มตั้งรหัสผ่านใหม่ |
+| `lib/views/password_change_ui.dart` | `PasswordChangeUI` | หน้ายืนยันผลในขั้นตอนสาธิต |
+| `lib/widgets/screen_widgets.dart` | `ScreenLayout`, `FormHeader`, `PrimaryButton` | ส่วนประกอบที่ใช้ร่วมกันระหว่างหน้าจอ |
+| `assets/images/`, `assets/fonts/` | — | รูปประกอบ โลโก้ ฟอนต์ และไฟล์สัญญาอนุญาต |
 
 ## การติดตั้งและใช้งาน
 
-เตรียม Flutter SDK 3.47.0 ขึ้นไปที่รองรับ Dart 3.14 และ Google Chrome
-ตรวจให้แน่ใจว่าคำสั่ง `flutter` อยู่ใน PATH จากนั้นเปิด Terminal ที่โฟลเดอร์โปรเจกต์
-
-รันคำสั่งต่อไปนี้
+ใช้ Flutter SDK 3.47.0 ขึ้นไปตาม `pubspec.lock` ที่รองรับ Dart `^3.14.0` ตาม `pubspec.yaml` ติดตั้ง Chrome แล้วรันคำสั่งจากโฟลเดอร์โปรเจกต์
 
 ```sh
 flutter pub get
@@ -68,17 +58,15 @@ flutter run -d chrome
 
 ## การทดสอบและข้อจำกัด
 
-งานพัฒนาและ QA ผ่านการตรวจรับเดิมตามบันทึกของรายวิชา ภาพหน้าจอใน README เป็นหลักฐานจาก Flutter Web และการเทียบขนาด iPhone ใน Chrome เป็นการตรวจเลย์เอาต์เว็บ ผลทดสอบบน Android และ iOS แบบ native ยังไม่มีหลักฐานยืนยัน
-
-Widget tests ใน `test/widget_test.dart` ตรวจเส้นทางทั้งหกหน้าจอและพฤติกรรมของฟอร์มด้วยคำสั่ง `flutter test` รอบเตรียมเอกสารนี้ใช้ผลตรวจรับเดิมและไม่ได้รัน Build หรือ Tests ซ้ำ การเข้าสู่ระบบ การกรอก OTP และการตั้งรหัสผ่านเป็นขั้นตอนสาธิตที่ทำงานในเครื่องโดยไม่มีการเชื่อมต่อระบบยืนยันตัวตน
+- ตรวจเลย์เอาต์บน Flutter Web ใน Chrome ผลรันแอปแบบ native บน Android และ iOS ยังไม่ได้ยืนยัน
+- [Widget tests](test/widget_test.dart) ครอบคลุมเส้นทางทั้งหกหน้า การแสดงหรือซ่อนรหัสผ่าน และการกรอก OTP
+- การเข้าสู่ระบบ การยืนยัน OTP และการตั้งรหัสผ่านใหม่เป็นขั้นตอนสาธิต แอปยังไม่มี Backend สำหรับตรวจบัญชี ส่งรหัส หรือบันทึกรหัสผ่าน และยังไม่ได้เชื่อมต่อผู้ให้บริการ Social Login
 
 ## เครดิตและสิทธิ์การใช้งาน
 
 ### 1. ทรัพยากรจากอาจารย์และ Figma
 
-งานนี้อ้างอิง Mockup ใน Figma และใช้ภาพกับไอคอนจาก Resources ของรายวิชา
-เมื่อวันที่ 26 พฤศจิกายน 2569 อาจารย์ตอบว่า “จัดได้เลย” สำหรับการนำรูปภาพ ไอคอนจาก Figma และ Resources ที่อาจารย์ให้ขึ้น Public GitHub เพื่อส่ง Assignment
-คำอนุญาตมีขอบเขตเพื่อส่งงานในรายวิชา ลิขสิทธิ์ยังเป็นของเจ้าของเดิม และการใช้ทรัพยากรของบุคคลที่สามอยู่ภายใต้เงื่อนไขของเจ้าของสิทธิ์แต่ละราย
+หน้าจออ้างอิง Mockup ใน Figma และใช้ภาพกับไอคอนจาก Resources ของรายวิชา
 
 ### 2. Fonts, Packages และ Open-source Licenses
 
@@ -97,8 +85,7 @@ Widget tests ใน `test/widget_test.dart` ตรวจเส้นทางท
 
 ### 3. Third-party Assets และ Trademarks
 
-โลโก้ในหน้า Login และภาพหน้าจอใช้แสดงตามแบบ UI ในรายวิชา ปุ่ม Social Login เป็นส่วนของหน้าจอสาธิต
-เครื่องหมายการค้าเป็นของเจ้าของแต่ละราย การแจกจ่ายไฟล์โลโก้และภาพที่มีโลโก้บน Public GitHub ยังต้องยืนยันสิทธิ์ตามแหล่งต้นทางและเงื่อนไขที่ใช้กับงานนี้
+โลโก้และภาพประกอบใช้ในหน้าจอสาธิตเพื่อการศึกษา เครื่องหมายการค้าเป็นของเจ้าของแต่ละราย สิทธิ์เผยแพร่ซ้ำของไฟล์โลโก้และภาพหน้าจอที่มีโลโก้ยังไม่ได้รับการยืนยัน
 
 | ไฟล์ | เจ้าของเครื่องหมายและข้อจำกัด |
 |---|---|
